@@ -9,7 +9,7 @@ const closeMenu = () => {
   document.body.style.overflow = '';
 };
 
-menuButton.addEventListener('click', () => {
+menuButton?.addEventListener('click', () => {
   const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
   menuButton.setAttribute('aria-expanded', String(!isOpen));
   menuButton.setAttribute('aria-label', isOpen ? 'メニューを開く' : 'メニューを閉じる');
@@ -17,7 +17,7 @@ menuButton.addEventListener('click', () => {
   document.body.style.overflow = isOpen ? '' : 'hidden';
 });
 
-nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 24);
@@ -25,4 +25,28 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', () => {
   if (window.innerWidth > 980) closeMenu();
+});
+
+const inquirySelect = document.querySelector('#inquiry-type');
+const params = new URLSearchParams(window.location.search);
+if (inquirySelect && params.get('type') === 'recruit') {
+  inquirySelect.value = '採用について';
+}
+
+const contactForm = document.querySelector('#contact-form');
+contactForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(contactForm);
+  const subject = `【ダイトクWebサイト】${data.get('お問い合わせ種別')}`;
+  const body = [
+    `お問い合わせ種別：${data.get('お問い合わせ種別')}`,
+    `会社名：${data.get('会社名') || '未入力'}`,
+    `お名前：${data.get('お名前')}`,
+    `メールアドレス：${data.get('メールアドレス')}`,
+    `電話番号：${data.get('電話番号') || '未入力'}`,
+    '',
+    'お問い合わせ内容：',
+    data.get('お問い合わせ内容')
+  ].join('\n');
+  window.location.href = `mailto:info@daitoku-inc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
