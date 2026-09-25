@@ -2,6 +2,11 @@ const header = document.querySelector('.site-header');
 const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('.global-nav');
 
+// 「実績紹介」から用途変更したサービスページの表記を全ページで統一する。
+document.querySelectorAll('a[href="works.html"]').forEach((link) => {
+  if (link.textContent.trim() === '実績紹介') link.textContent = 'サービス紹介';
+});
+
 const closeMenu = () => {
   menuButton.setAttribute('aria-expanded', 'false');
   menuButton.setAttribute('aria-label', 'メニューを開く');
