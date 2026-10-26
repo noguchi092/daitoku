@@ -42,3 +42,25 @@
 .guide-hub-intro p{font-size:14px;line-height:2;color:#546677}
 @media(max-width:850px){.guide-layout{grid-template-columns:minmax(0,1fr);gap:26px}.guide-aside{position:static;grid-row:1}.guide-aside nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:15px}.guide-hero{padding:65px 24px 55px}}
 @media(max-width:600px){.guide-layout{padding:14px 19px 65px}.guide-hero h1{font-size:29px}.guide-hero .guide-lead{font-size:13px}.guide-crumb{padding:16px 19px}.guide-step{padding:20px 17px 18px 56px}.guide-step:before{left:15px}.guide-example{padding:21px}.guide-hub-links,.guide-related{grid-template-columns:1fr}.guide-aside nav{grid-template-columns:1fr}.guide-main h2{font-size:24px}}
+
+/* Hub cards: two independent links per tool */
+.tool-card-body{min-height:300px;display:grid;grid-template-columns:170px minmax(0,1fr)}
+.tool-card-body .tool-icon{min-height:100%}
+.tool-card-body .tool-card-copy{display:flex;flex-direction:column}
+.tool-card-body .tool-card-copy>span{display:block}
+.tool-card-actions{margin-top:auto;display:flex;flex-wrap:wrap;gap:9px;padding-top:10px}
+.tool-card-actions a{display:inline-flex;justify-content:center;align-items:center;text-align:center;min-height:39px;padding:9px 13px;border-radius:3px;border:1px solid #0a4e83;color:#0a4e83;font-size:12px;font-weight:600;transition:background .2s}
+.tool-card-actions a:first-child{background:#fff}
+.tool-card-actions a:last-child{background:#0a4e83;color:#fff}
+.tool-card-actions a:hover{background:#dfeef7}
+.tool-card-actions a:last-child:hover{background:#0b659e}
+.tool-card:not(:has(> a)):hover{transform:none}
+.hub-howto{margin:0 auto 70px;max-width:1160px;padding:40px 25px;background:#f2f6f9;border:1px solid #e0e7ed}
+.hub-howto h2{font:500 27px "Noto Serif JP",serif;margin:3px 0 12px}
+.hub-howto>p{font-size:13px;line-height:2;color:#536374}
+.hub-howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.hub-howto-grid article{padding:24px;background:#fff;border:1px solid #e0e7ed}
+.hub-howto-grid strong{font-size:16px;color:#153e60}
+.hub-howto-grid p{font-size:12px;color:#536374;line-height:2;margin:9px 0 0}
+@media(max-width:900px){.tool-card-body{grid-template-columns:135px minmax(0,1fr)}}
+@media(max-width:760px){.tool-card-body{display:block;min-height:0}.tool-card-body .tool-icon{min-height:135px}.tool-card-actions{margin-top:14px}.hub-howto-grid{display:block}.hub-howto-grid article{margin-bottom:13px}.hub-howto{margin:0 19px 50px;padding:28px 21px}.hub-howto h2{font-size:25px}}
